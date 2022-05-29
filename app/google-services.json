@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "448446497109",
+    "project_id": "nutshop-e5883",
+    "storage_bucket": "nutshop-e5883.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448446497109:android:f5dc4951eaedd9f2e56fdc",
+        "android_client_info": {
+          "package_name": "com.example.nutshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448446497109-2ase0cemmqnu3m903n4nqj1otjkg6egf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nutshop",
+            "certificate_hash": "d75751e0d81bc201a4558fd02d620b4e5bb6c4b6"
+          }
+        },
+        {
+          "client_id": "448446497109-kmajhiq0phtoj886vel50fjt8jk6shrv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5fGAijDHB-tr1P18BMjwBJ05LbAfL9Ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448446497109-kmajhiq0phtoj886vel50fjt8jk6shrv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

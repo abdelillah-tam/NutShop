@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="346dp"
+        android:id="@+id/detail_product_image_cardView"
+        android:backgroundTint="@color/blue_50"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <ImageView
+            android:id="@+id/detail_product_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/gold_whey_standard_5lbs_chocolate"
+             />
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+    <TextView
+        android:id="@+id/detail_product_title"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/tajawal_bold"
+        android:textSize="20sp"
+        android:textColor="@color/blue_800"
+        android:text="OPTIMUM NUTRITION GOLD STANDARD 100% WHEY PROTEIN"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_product_image_cardView" />
+
+    <TextView
+        android:id="@+id/detail_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$74"
+        android:textSize="21sp"
+        android:fontFamily="@font/tajawal_bold"
+        android:textColor="@color/blue_900"
+        app:layout_constraintBottom_toBottomOf="@+id/detail_product_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detail_product_title"
+        app:layout_constraintTop_toTopOf="@+id/detail_product_title" />
+
+    <TextView
+        android:id="@+id/detail_product_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/product_sans_regular"
+        android:text="Each serving of the world’s best-selling whey protein powder provides 24 grams of high-quality whey protein primarily from Whey Protein Isolate, which has had excess carbohydrates, fat, and lactose ‘isolated’ out using sophisticated filtering technologies. The powder is also instantized for easy mixing using just a glass and spoon. With more than 20 different flavors – including naturally flavored options – there’s no doubt this is the GOLD STANDARD®."
+        android:textSize="16sp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_product_title" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addtocart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/buttonshape"
+        android:elevation="0dp"
+        android:fontFamily="@font/tajawal_bold"
+        android:text="Add to cart"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        app:backgroundTint="@color/orange_600"
+        app:elevation="0dp"
+        app:icon="@drawable/ic_baseline_shopping_cart_56"
+        app:iconGravity="textStart"
+        app:iconSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/plus_quantity"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toEndOf="@+id/plus_quantity"
+        app:layout_constraintTop_toTopOf="@+id/plus_quantity" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/minus_quantity"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/tajawal_regular"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/quantityyouwant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/tajawal_regular"
+        android:textSize="18sp"
+        android:textColor="@color/blue_900"
+        app:layout_constraintBottom_toBottomOf="@+id/minus_quantity"
+        app:layout_constraintStart_toEndOf="@+id/minus_quantity"
+        app:layout_constraintTop_toTopOf="@+id/minus_quantity"
+        tools:text="23" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/plus_quantity"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="@+id/minus_quantity"
+        app:layout_constraintStart_toEndOf="@+id/quantityyouwant"
+        app:layout_constraintTop_toTopOf="@+id/minus_quantity" />
+</androidx.constraintlayout.widget.ConstraintLayout>

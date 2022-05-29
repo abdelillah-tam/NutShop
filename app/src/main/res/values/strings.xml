@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NutShop</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="whey_protein">Whey Protein</string>
+    <string name="pre_workout">Pre-Workout</string>
+    <string name="fat_burners">Fat Burners</string>
+    <string name="mass_gainers">Mass Gainers</string>
+    <string name="probiotics">Probiotics</string>
+
+    <string name="facebook_app_id">1681372498871352</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">6ebbd17104facddd2db9f4218c5eb3ee</string>
+</resources>
