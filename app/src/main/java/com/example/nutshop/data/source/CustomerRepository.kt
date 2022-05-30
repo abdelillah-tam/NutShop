@@ -13,4 +13,7 @@ interface CustomerRepository {
     fun getProfileInformation() : Flow<Customer?>
     fun getProductsInShopcart() : Flow<List<Product?>>
     fun deleteProductFromShopcart(product: Product) : Flow<Boolean>
+
+    fun addToFavorite(product: Product) : Flow<Boolean>
+    fun deleteFromFavorite(product: Product) : Flow<Boolean>
 }

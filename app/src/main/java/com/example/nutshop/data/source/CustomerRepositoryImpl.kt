@@ -42,4 +42,16 @@ class CustomerRepositoryImpl @Inject constructor(
             emit(it)
         }
     }
+
+    override fun addToFavorite(product: Product): Flow<Boolean> = flow{
+        dataSource.addToFavorite(product).collect{
+            emit(it)
+        }
+    }
+
+    override fun deleteFromFavorite(product: Product): Flow<Boolean> = flow{
+        dataSource.addToFavorite(product).collect{
+            emit(it)
+        }
+    }
 }

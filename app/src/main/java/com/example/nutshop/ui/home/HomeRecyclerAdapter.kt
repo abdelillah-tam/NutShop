@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nutshop.R
 import com.example.nutshop.domain.models.Product
+import com.google.android.material.checkbox.MaterialCheckBox
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
@@ -28,10 +29,13 @@ class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyc
         val productImage = holder.itemView.findViewById(R.id.product_image) as ImageView
         val productTitle = holder.itemView.findViewById(R.id.product_title) as TextView
         val productPrice = holder.itemView.findViewById(R.id.product_price) as TextView
+        val productFavorite = holder.itemView.findViewById(R.id.product_favorite) as MaterialCheckBox
 
         productTitle.text = product?.productName
         productPrice.text = "$${product?.price}"
         if(!product?.productPictureLink.equals("")) Picasso.get().load(product?.productPictureLink).into(productImage)
+
+        productFavorite.isChecked = product?.favorite == true
     }
 
     override fun getItemCount(): Int {

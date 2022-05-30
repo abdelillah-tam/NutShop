@@ -17,9 +17,10 @@ data class Product(
     val description: String,
     val productPictureLink: String,
     val category: Category,
-    var quantityTaken: Int
+    var quantityTaken: Int,
+    var favorite: Boolean
 ) : Parcelable {
 
-    constructor() : this("","",0.0,0,"","",Category.WHEYPROTEIN,0)
+    constructor() : this("","",0.0,0,"","",Category.WHEYPROTEIN,0, false)
 
 }

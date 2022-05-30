@@ -14,4 +14,8 @@ interface DataSource {
     fun getProfileInformation() : Flow<DocumentSnapshot>
     fun getProductsInShopcart() : Flow<List<Product?>>
     fun deleteProductFromShopcart(product: Product) : Flow<Boolean>
+
+    fun getProductsInFavorite() : Flow<List<Product?>>
+    fun addToFavorite(product: Product) : Flow<Boolean>
+    fun deteleFromFavorite(product: Product) : Flow<Boolean>
 }

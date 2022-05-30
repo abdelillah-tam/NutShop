@@ -153,4 +153,72 @@ object RemoteDataSource : DataSource {
         emit(result)
 
     }
+
+    override fun getProductsInFavorite(): Flow<List<Product?>> = callbackFlow{
+        customerFirestore.document(auth.currentUser!!.uid)
+            .collection("favorite")
+            .addSnapshotListener { value, error ->
+                trySend(value!!.toObjects(Product::class.java))
+            }
+
+        awaitClose {
+            this.close()
+        }
+    }
+
+    override fun addToFavorite(product: Product): Flow<Boolean> = flow{
+        var result = false
+        product.favorite = true
+        customerFirestore.document(auth.currentUser!!.uid)
+            .collection("favorite")
+            .document(product.productId)
+            .set(product)
+            .addOnCompleteListener {
+                if (it.isSuccessful){
+                    result = true
+                }
+            }.addOnFailureListener {
+                result = false
+            }.await()
+
+        productsFirestore.document(product.productId)
+            .update("favorite", true)
+            .addOnCompleteListener {
+                if (it.isSuccessful){
+                    result = true
+                }
+            }.addOnFailureListener {
+                result = false
+            }.await()
+
+        emit(result)
+    }
+
+    override fun deteleFromFavorite(product: Product): Flow<Boolean> = flow{
+        var result = false
+        product.favorite = false
+        customerFirestore.document(auth.currentUser!!.uid)
+            .collection("favorite")
+            .document(product.productId)
+            .delete()
+            .addOnCompleteListener {
+                if (it.isSuccessful){
+                    result = true
+                }
+            }.addOnFailureListener {
+                result = false
+            }.await()
+
+        productsFirestore.document(product.productId)
+            .update("favorite", false)
+            .addOnCompleteListener {
+                if (it.isSuccessful){
+                    result = true
+                }
+            }.addOnFailureListener {
+                result = false
+            }.await()
+
+        emit(result)
+    }
 }
