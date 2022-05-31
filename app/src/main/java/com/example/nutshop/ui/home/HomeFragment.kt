@@ -34,7 +34,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
         productListAdapter = HomeRecyclerAdapter()
-
+        productListAdapter.setViewModel(homeViewModel)
         gestureCompat = GestureDetectorCompat(requireContext(), object : GestureDetector.OnGestureListener{
             override fun onDown(p0: MotionEvent?): Boolean {
                 return false
@@ -82,12 +82,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.recyclerlistProductsHome.apply {
             adapter = productListAdapter
             layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
-            addOnItemTouchListener(object : RecyclerView.SimpleOnItemTouchListener() {
+            /*addOnItemTouchListener(object : RecyclerView.SimpleOnItemTouchListener() {
                 override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
                     gestureCompat.onTouchEvent(e)
                     return false
                 }
-            })
+            })*/
         }
 
         binding.category.check(R.id.category_whey)

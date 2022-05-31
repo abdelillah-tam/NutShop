@@ -15,6 +15,8 @@ import javax.inject.Inject
 class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder>() {
 
     private var productList = emptyList<Product?>()
+    private lateinit var homeViewModel: HomeViewModel
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -36,6 +38,16 @@ class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyc
         if(!product?.productPictureLink.equals("")) Picasso.get().load(product?.productPictureLink).into(productImage)
 
         productFavorite.isChecked = product?.favorite == true
+        productFavorite.setOnCheckedChangeListener { compoundButton, isChecked ->
+            if (compoundButton.isPressed) {
+                if (isChecked) {
+                    homeViewModel.addToFavorite(product!!)
+                } else {
+                    homeViewModel.deleteFromFavorite(product!!)
+                }
+            }
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -50,5 +62,9 @@ class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyc
 
     fun getItem(position: Int) : Product?{
         return productList[position]
+    }
+
+    fun setViewModel(homeViewModel: HomeViewModel){
+        this.homeViewModel = homeViewModel
     }
 }

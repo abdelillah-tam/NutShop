@@ -7,6 +7,7 @@ import com.example.nutshop.domain.models.Product
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,6 +24,16 @@ class FavoriteViewModel @Inject constructor(
         viewModelScope.launch {
             customerRepository.deleteFromFavorite(product).collect{
 
+            }
+        }
+    }
+
+    fun getProductsInFavorite(){
+        viewModelScope.launch {
+            customerRepository.getProdustsInFavorite().collect{ list ->
+                _state.update {
+                    it.copy(list = list)
+                }
             }
         }
     }

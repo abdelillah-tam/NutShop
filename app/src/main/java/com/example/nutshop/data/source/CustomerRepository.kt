@@ -16,5 +16,5 @@ interface CustomerRepository {
 
     fun addToFavorite(product: Product) : Flow<Boolean>
     fun deleteFromFavorite(product: Product) : Flow<Boolean>
-    fun ok()
+    fun getProdustsInFavorite() : Flow<List<Product?>>
 }
