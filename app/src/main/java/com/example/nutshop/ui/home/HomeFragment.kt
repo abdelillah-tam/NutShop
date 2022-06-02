@@ -7,6 +7,7 @@ import android.view.MotionEvent
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.view.GestureDetectorCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.nutshop.R
 import com.example.nutshop.databinding.FragmentHomeBinding
@@ -25,17 +26,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var binding : FragmentHomeBinding
     private lateinit var productListAdapter : HomeRecyclerAdapter
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
-    private lateinit var gestureCompat: GestureDetectorCompat
+    //private lateinit var gestureCompat: GestureDetectorCompat
 
     @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
         productListAdapter = HomeRecyclerAdapter()
-        productListAdapter.setViewModel(homeViewModel)
-        gestureCompat = GestureDetectorCompat(requireContext(), object : GestureDetector.OnGestureListener{
+        productListAdapter.setViewModel(homeViewModel, this)
+       /* gestureCompat = GestureDetectorCompat(requireContext(), object : GestureDetector.OnGestureListener{
             override fun onDown(p0: MotionEvent?): Boolean {
                 return false
             }
@@ -77,7 +78,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
 
         })
-
+*/
 
         binding.recyclerlistProductsHome.apply {
             adapter = productListAdapter

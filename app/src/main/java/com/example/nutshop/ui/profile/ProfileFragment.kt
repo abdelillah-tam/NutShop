@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -17,7 +18,7 @@ import kotlinx.coroutines.launch
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private lateinit var binding : FragmentProfileBinding
-    private val profileViewModel : ProfileViewModel by viewModels()
+    private val profileViewModel : ProfileViewModel by activityViewModels()
     
 
     @SuppressLint("UnsafeRepeatOnLifecycleDetector")

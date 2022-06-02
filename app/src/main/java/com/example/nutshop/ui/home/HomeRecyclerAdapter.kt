@@ -5,6 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nutshop.R
 import com.example.nutshop.domain.models.Product
@@ -16,7 +19,7 @@ class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyc
 
     private var productList = emptyList<Product?>()
     private lateinit var homeViewModel: HomeViewModel
-
+    private lateinit var homeFragment: HomeFragment
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -36,6 +39,11 @@ class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyc
         productTitle.text = product?.productName
         productPrice.text = "$${product?.price}"
         if(!product?.productPictureLink.equals("")) Picasso.get().load(product?.productPictureLink).into(productImage)
+
+        (holder.itemView.findViewById(R.id.thisforclicking) as ConstraintLayout).setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(product)
+            homeFragment.findNavController().navigate(action)
+        }
 
         productFavorite.isChecked = product?.favorite == true
         productFavorite.setOnCheckedChangeListener { compoundButton, isChecked ->
@@ -64,7 +72,8 @@ class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyc
         return productList[position]
     }
 
-    fun setViewModel(homeViewModel: HomeViewModel){
+    fun setViewModel(homeViewModel: HomeViewModel, homeFragment: HomeFragment){
         this.homeViewModel = homeViewModel
+        this.homeFragment = homeFragment
     }
 }

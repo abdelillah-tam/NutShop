@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -20,7 +21,7 @@ class ShopcartFragment : Fragment(R.layout.fragment_shopcart) {
     lateinit var listAdapter : ShopcartListAdapter
     private lateinit var binding : FragmentShopcartBinding
 
-    val shopcartViewModel : ShopcartViewModel by viewModels()
+    val shopcartViewModel : ShopcartViewModel by activityViewModels()
     @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,8 +37,8 @@ class ShopcartFragment : Fragment(R.layout.fragment_shopcart) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 shopcartViewModel.state.collect{
+                    listAdapter.setProducts(it.list)
                     if (!it.list.isEmpty()) {
-                        listAdapter.setProducts(it.list)
                         var total: Double = 0.00
                         it.list.forEach {
                             total += it!!.quantityTaken * it.price

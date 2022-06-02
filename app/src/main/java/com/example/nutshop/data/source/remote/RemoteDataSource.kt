@@ -154,7 +154,7 @@ object RemoteDataSource : DataSource {
 
     }
 
-    override fun getProductsInFavorite(): Flow<List<Product?>> = callbackFlow{
+    override fun getProductsInFavorite() : Flow<List<Product?>> = callbackFlow{
         customerFirestore.document(auth.currentUser!!.uid)
             .collection("favorite")
             .addSnapshotListener { value, error ->
