@@ -1,4 +1,4 @@
-package com.example.nutshop.ui.favorite
+package com.example.nutshop.ui.wishlist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso
 class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.ViewHolder>() {
 
     private var list = mutableListOf<Product?>()
-    private lateinit var favoriteViewModel: FavoriteViewModel
+    private lateinit var wishlistViewModel: WishlistViewModel
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -40,7 +40,7 @@ class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.ViewHolder>
         }
         productFavorite.setOnCheckedChangeListener { compoundButton, isChecked ->
             if (!isChecked){
-                favoriteViewModel.deleteFromFavorite(product!!)
+                wishlistViewModel.deleteFromFavorite(product!!)
             }
         }
     }
@@ -59,8 +59,8 @@ class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.ViewHolder>
         result.dispatchUpdatesTo(this)
     }
 
-    fun setViewModel(favoriteViewModel: FavoriteViewModel){
-        this.favoriteViewModel = favoriteViewModel
+    fun setViewModel(wishlistViewModel: WishlistViewModel){
+        this.wishlistViewModel = wishlistViewModel
     }
 }
 

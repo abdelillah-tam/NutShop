@@ -1,4 +1,4 @@
-package com.example.nutshop.ui.favorite
+package com.example.nutshop.ui.wishlist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,12 +12,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FavoriteViewModel @Inject constructor(
+class WishlistViewModel @Inject constructor(
     private val customerRepository: CustomerRepository
 ) : ViewModel() {
 
 
-    private val _state = MutableStateFlow(FavoriteUiState())
+    private val _state = MutableStateFlow(WishlistUiState())
     val state = _state.asStateFlow()
 
     fun deleteFromFavorite(product : Product){

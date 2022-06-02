@@ -70,5 +70,5 @@
         app:buttonTint="@null"
         android:backgroundTint="@null"
         android:button="@drawable/favorite_selector"
-        android:id="@+id/product_favorite"/>
+        android:id="@+id/product_wishlist"/>
 </androidx.cardview.widget.CardView>

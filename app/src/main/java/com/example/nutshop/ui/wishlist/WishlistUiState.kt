@@ -1,7 +1,7 @@
-package com.example.nutshop.ui.favorite
+package com.example.nutshop.ui.wishlist
 
 import com.example.nutshop.domain.models.Product
 
-data class FavoriteUiState(
+data class WishlistUiState(
     var list: List<Product?> = emptyList()
 )

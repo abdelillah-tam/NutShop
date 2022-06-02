@@ -1,40 +1,37 @@
-package com.example.nutshop.ui.favorite
+package com.example.nutshop.ui.wishlist
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nutshop.R
-import com.example.nutshop.databinding.FragmentFavoriteBinding
+import com.example.nutshop.databinding.FragmentWishlistBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
+class WishlistFragment : Fragment(R.layout.fragment_wishlist) {
 
-    private lateinit var binding : FragmentFavoriteBinding
+    private lateinit var binding : FragmentWishlistBinding
 
-    private val favoriteViewModel : FavoriteViewModel by activityViewModels()
+    private val wishlistViewModel : WishlistViewModel by activityViewModels()
     private lateinit var favoriteAdapter : FavoriteListAdapter
 
 
     @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentFavoriteBinding.bind(view)
+        binding = FragmentWishlistBinding.bind(view)
 
         favoriteAdapter = FavoriteListAdapter()
-        favoriteAdapter.setViewModel(favoriteViewModel)
-        favoriteViewModel.getProductsInFavorite()
+        favoriteAdapter.setViewModel(wishlistViewModel)
+        wishlistViewModel.getProductsInFavorite()
 
         binding.favoriteList.let {
             it.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -44,7 +41,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
-                favoriteViewModel.state.collect{
+                wishlistViewModel.state.collect{
                     favoriteAdapter.setList(it.list)
                 }
             }

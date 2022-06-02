@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nutshop.R
@@ -34,7 +33,7 @@ class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyc
         val productImage = holder.itemView.findViewById(R.id.product_image) as ImageView
         val productTitle = holder.itemView.findViewById(R.id.product_title) as TextView
         val productPrice = holder.itemView.findViewById(R.id.product_price) as TextView
-        val productFavorite = holder.itemView.findViewById(R.id.product_favorite) as MaterialCheckBox
+        val productWishList = holder.itemView.findViewById(R.id.product_wishlist) as MaterialCheckBox
 
         productTitle.text = product?.productName
         productPrice.text = "$${product?.price}"
@@ -45,13 +44,13 @@ class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyc
             homeFragment.findNavController().navigate(action)
         }
 
-        productFavorite.isChecked = product?.favorite == true
-        productFavorite.setOnCheckedChangeListener { compoundButton, isChecked ->
+        productWishList.isChecked = product?.favorite == true
+        productWishList.setOnCheckedChangeListener { compoundButton, isChecked ->
             if (compoundButton.isPressed) {
                 if (isChecked) {
-                    homeViewModel.addToFavorite(product!!)
+                    homeViewModel.addToWishList(product!!)
                 } else {
-                    homeViewModel.deleteFromFavorite(product!!)
+                    homeViewModel.deleteFromWishList(product!!)
                 }
             }
         }

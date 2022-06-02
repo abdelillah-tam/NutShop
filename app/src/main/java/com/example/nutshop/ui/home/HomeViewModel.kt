@@ -51,7 +51,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun addToFavorite(product: Product){
+    fun addToWishList(product: Product){
         viewModelScope.launch {
             customerRepository.addToFavorite(product).collect{
 
@@ -59,7 +59,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun deleteFromFavorite(product: Product){
+    fun deleteFromWishList(product: Product){
         viewModelScope.launch {
             customerRepository.deleteFromFavorite(product).collect{
 
