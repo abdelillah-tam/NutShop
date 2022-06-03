@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_home_page_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_home_page_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/cart_page"
@@ -99,4 +102,13 @@
         android:name="com.example.nutshop.ui.wishlist.WishlistFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_wishlist" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.nutshop.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_home_page"
+            app:destination="@id/home_page" />
+    </fragment>
 </navigation>

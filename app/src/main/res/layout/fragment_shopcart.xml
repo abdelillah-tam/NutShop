@@ -7,13 +7,13 @@
     tools:context=".ui.shopcart.ShopcartFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_shopcart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:id="@+id/list_shopcart"
-        tools:listitem="@layout/shopcart_item"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/shopcart_item" />
 
     <TextView
         android:id="@+id/textView5"
@@ -40,4 +40,18 @@
         app:layout_constraintStart_toEndOf="@+id/textView5"
         tools:text="48$" />
 
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="8dp"
+        android:text="Checkout"
+        android:id="@+id/checkoutbutton"
+        android:background="@drawable/buttonshape"
+        app:backgroundTint="@color/orange_600"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/totalprice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/totalprice"
+        app:layout_constraintTop_toTopOf="@+id/totalprice" />
 </androidx.constraintlayout.widget.ConstraintLayout>

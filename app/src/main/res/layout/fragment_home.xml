@@ -8,24 +8,25 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar"
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="0dp"
         app:layout_constraintTop_toTopOf="parent">
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:layout_gravity="right"
-            android:layout_marginRight="16dp"
-            app:backgroundTint="@color/blue_900"
-            app:srcCompat="@drawable/ic_search_button"
-            app:maxImageSize="24dp"
-            app:fabSize="mini"
-            app:elevation="0dp"
-            app:borderWidth="1dp"
-            />
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/searchshape"
+            android:drawableLeft="@drawable/ic_search_button"
+            android:paddingLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:hint="Search for a product"
+            android:fontFamily="@font/tajawal_regular"
+            android:focusable="false"
+            android:editable="false"
+            android:id="@+id/searchedittext"
+            />
     </com.google.android.material.appbar.MaterialToolbar>
 
     <HorizontalScrollView
