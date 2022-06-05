@@ -9,4 +9,5 @@ interface ProductRepository {
 
     fun getProductsByCategory(category: Category) : Flow<List<Product?>>
     fun addToCart(product: Product, quantity: Int) : Flow<Boolean>
+    fun searchForProducts(word: String) : Flow<List<Product?>>
 }

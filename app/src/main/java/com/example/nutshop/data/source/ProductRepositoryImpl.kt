@@ -23,4 +23,10 @@ class ProductRepositoryImpl @Inject constructor(
             emit(it)
         }
     }
+
+    override fun searchForProducts(word: String): Flow<List<Product?>> = flow{
+        dataSource.searchForProducts(word).collect{
+            emit(it)
+        }
+    }
 }

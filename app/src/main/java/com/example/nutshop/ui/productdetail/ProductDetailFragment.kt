@@ -2,14 +2,18 @@ package com.example.nutshop.ui.productdetail
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.nutshop.R
 import com.example.nutshop.databinding.FragmentProductDetailBinding
 import com.google.android.material.snackbar.Snackbar
@@ -30,9 +34,12 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProductDetailBinding.bind(view)
 
+        initToolbar()
+
         val product = args.product
 
         productDetailViewModel.showProductOnScreen(product)
+
         binding.quantityyouwant.text = "0"
 
         binding.plusQuantity.setOnClickListener {
@@ -48,7 +55,6 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
             if (newQuantity >= 0) binding.quantityyouwant.text = newQuantity.toString()
         }
 
-
         binding.addtocart.setOnClickListener {
             val finalQuantity = binding.quantityyouwant.text.toString().toInt()
             productDetailViewModel.addToCart(
@@ -57,6 +63,9 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
             )
         }
 
+        binding.searchedittext.setOnClickListener {
+            findNavController().navigate(R.id.action_productDetailFragment_to_searchFragment)
+        }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -64,7 +73,8 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
                     binding.detailProductTitle.text = ui.product.productName
                     binding.detailProductDescription.text = ui.product.description
                     binding.detailProductPrice.text = "$${ui.product.price}"
-                    Picasso.get().load(ui.product.productPictureLink).into(binding.detailProductImage)
+                    Picasso.get().load(ui.product.productPictureLink)
+                        .into(binding.detailProductImage)
 
                     if (!ui.firstRun) {
                         if (ui.addedToCart) {
@@ -88,11 +98,32 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
             }
         }
 
-
     }
 
 
     fun changeQuantity(quantityNumber: Int, quantityAdded: Int): Int {
         return quantityNumber + quantityAdded
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.home -> {
+                findNavController().navigateUp()
+                true
+            }
+            else -> false
+        }
+    }
+
+    fun initToolbar(){
+        val mActivity = activity as AppCompatActivity
+        setHasOptionsMenu(true)
+        mActivity.setSupportActionBar(binding.materialToolbarDetail)
+        mActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val navHost =
+            mActivity.supportFragmentManager.findFragmentById(R.id.fragment_container_for_fragments) as NavHostFragment
+        mActivity.setupActionBarWithNavController(navHost.navController)
+        binding.materialToolbarDetail.navigationIcon = resources.getDrawable(R.drawable.ic_back)
     }
 }

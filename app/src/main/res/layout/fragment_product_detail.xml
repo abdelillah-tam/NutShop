@@ -5,25 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbarDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_900"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/searchshape"
+            android:drawableLeft="@drawable/ic_search_button"
+            android:paddingLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:hint="Search for a product"
+            android:fontFamily="@font/tajawal_regular"
+            android:focusable="false"
+            android:editable="false"
+            android:id="@+id/searchedittext"
+            />
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/detail_product_image_cardView"
         android:layout_width="match_parent"
         android:layout_height="346dp"
-        android:id="@+id/detail_product_image_cardView"
         android:backgroundTint="@color/blue_50"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbarDetail">
 
         <ImageView
             android:id="@+id/detail_product_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:src="@drawable/gold_whey_standard_5lbs_chocolate"
-             />
+            android:src="@drawable/gold_whey_standard_5lbs_chocolate" />
     </com.google.android.material.card.MaterialCardView>
 
 

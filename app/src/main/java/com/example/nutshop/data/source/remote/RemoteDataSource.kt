@@ -89,14 +89,14 @@ object RemoteDataSource : DataSource {
 
 
         customerFirestore.document(auth.currentUser!!.uid)
-                .collection("shopcart")
-                .document(product.productId).set(product).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        result = true
-                    }
-                }.addOnFailureListener {
-                    result = false
-                }.await()
+            .collection("shopcart")
+            .document(product.productId).set(product).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    result = true
+                }
+            }.addOnFailureListener {
+                result = false
+            }.await()
 
 
         productsFirestore.document(product.productId).update(
@@ -117,7 +117,7 @@ object RemoteDataSource : DataSource {
         emit(result)
     }
 
-    override fun getProductsInShopcart() : Flow<List<Product?>> = callbackFlow{
+    override fun getProductsInShopcart(): Flow<List<Product?>> = callbackFlow {
         customerFirestore.document(auth.currentUser!!.uid)
             .collection("shopcart")
             .addSnapshotListener { value, error ->
@@ -129,14 +129,14 @@ object RemoteDataSource : DataSource {
         }
     }
 
-    override fun deleteProductFromShopcart(product: Product) : Flow<Boolean> = flow{
+    override fun deleteProductFromShopcart(product: Product): Flow<Boolean> = flow {
         var result = false
         customerFirestore.document(auth.currentUser!!.uid)
             .collection("shopcart")
             .document(product.productId).delete()
             .addOnCompleteListener {
-                if(it.isSuccessful){
-                    product.quantity+=product.quantityTaken
+                if (it.isSuccessful) {
+                    product.quantity += product.quantityTaken
                     product.quantityTaken = 0
                     productsFirestore.document(product.productId).update(
                         mapOf(
@@ -154,7 +154,7 @@ object RemoteDataSource : DataSource {
 
     }
 
-    override fun getProductsInFavorite() : Flow<List<Product?>> = callbackFlow{
+    override fun getProductsInFavorite(): Flow<List<Product?>> = callbackFlow {
         customerFirestore.document(auth.currentUser!!.uid)
             .collection("favorite")
             .addSnapshotListener { value, error ->
@@ -166,7 +166,7 @@ object RemoteDataSource : DataSource {
         }
     }
 
-    override fun addToFavorite(product: Product): Flow<Boolean> = flow{
+    override fun addToFavorite(product: Product): Flow<Boolean> = flow {
         var result = false
         product.favorite = true
         customerFirestore.document(auth.currentUser!!.uid)
@@ -174,7 +174,7 @@ object RemoteDataSource : DataSource {
             .document(product.productId)
             .set(product)
             .addOnCompleteListener {
-                if (it.isSuccessful){
+                if (it.isSuccessful) {
                     result = true
                 }
             }.addOnFailureListener {
@@ -184,7 +184,7 @@ object RemoteDataSource : DataSource {
         productsFirestore.document(product.productId)
             .update("favorite", true)
             .addOnCompleteListener {
-                if (it.isSuccessful){
+                if (it.isSuccessful) {
                     result = true
                 }
             }.addOnFailureListener {
@@ -194,7 +194,7 @@ object RemoteDataSource : DataSource {
         emit(result)
     }
 
-    override fun deteleFromFavorite(product: Product): Flow<Boolean> = flow{
+    override fun deteleFromFavorite(product: Product): Flow<Boolean> = flow {
         var result = false
         product.favorite = false
         customerFirestore.document(auth.currentUser!!.uid)
@@ -202,7 +202,7 @@ object RemoteDataSource : DataSource {
             .document(product.productId)
             .delete()
             .addOnCompleteListener {
-                if (it.isSuccessful){
+                if (it.isSuccessful) {
                     result = true
                 }
             }.addOnFailureListener {
@@ -212,7 +212,7 @@ object RemoteDataSource : DataSource {
         productsFirestore.document(product.productId)
             .update("favorite", false)
             .addOnCompleteListener {
-                if (it.isSuccessful){
+                if (it.isSuccessful) {
                     result = true
                 }
             }.addOnFailureListener {
@@ -220,5 +220,23 @@ object RemoteDataSource : DataSource {
             }.await()
 
         emit(result)
+    }
+
+    override fun searchForProducts(word: String): Flow<List<Product?>> = callbackFlow {
+        productsFirestore.whereGreaterThanOrEqualTo("productName", word).get()
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val list = it.result.toObjects(Product::class.java)
+                    if (list.size > 0) {
+                        trySend(list)
+                    } else {
+                        trySend(emptyList<Product?>())
+                    }
+                }
+            }.await()
+
+        awaitClose {
+            this.close()
+        }
     }
 }

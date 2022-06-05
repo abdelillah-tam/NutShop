@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         navHost.findNavController()
             .addOnDestinationChangedListener(NavController.OnDestinationChangedListener { _, destination, _ ->
-                if (destination.id == R.id.searchFragment) {
+                if (destination.id == R.id.searchFragment || destination.id == R.id.productDetailFragment) {
                     binding.bottomNavigationView.visibility = View.GONE
                 } else binding.bottomNavigationView.visibility = View.VISIBLE
             })
@@ -71,6 +71,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navHost.navController.navigateUp() || super.onNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        navHost.findNavController().navigateUp()
+        super.onBackPressed()
     }
 
 

@@ -18,4 +18,6 @@ interface DataSource {
     fun getProductsInFavorite() : Flow<List<Product?>>
     fun addToFavorite(product: Product) : Flow<Boolean>
     fun deteleFromFavorite(product: Product) : Flow<Boolean>
+
+    fun searchForProducts(word: String) : Flow<List<Product?>>
 }

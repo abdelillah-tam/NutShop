@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_productDetailFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/home_page"
@@ -104,7 +107,7 @@
         tools:layout="@layout/fragment_wishlist" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.nutshop.SearchFragment"
+        android:name="com.example.nutshop.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
