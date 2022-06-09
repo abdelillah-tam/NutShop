@@ -11,6 +11,8 @@ import com.example.nutshop.domain.models.Product
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.imageview.ShapeableImageView
 import com.squareup.picasso.Picasso
+import org.json.JSONArray
+import org.json.JSONObject
 
 class ShopcartListAdapter : RecyclerView.Adapter<ShopcartListAdapter.Holder>(){
 
@@ -63,7 +65,47 @@ class ShopcartListAdapter : RecyclerView.Adapter<ShopcartListAdapter.Holder>(){
         this.shopcartViewModel = shopcartViewModel
     }
 
+    private fun gatewayTokenizationSpecification(): JSONObject {
+        return JSONObject().apply {
+            put("type", "PAYMENT_GATEWAY")
+            put("parameters", JSONObject(mapOf(
+                "gateway" to "mpgs",
+                "gatewayMerchantId" to "BCR2DN4TQD6YBJQF"
+            )))
+        }
+    }
 
+    private val allowedCardNetworks = JSONArray(listOf(
+        "MASTERCARD",
+        "VISA"))
+
+    private val allowedCardAuthMethods = JSONArray(listOf(
+        "PAN_ONLY",
+        "CRYPTOGRAM_3DS"))
+
+    private fun baseCardPaymentMethod(): JSONObject {
+        return JSONObject().apply {
+
+            val parameters = JSONObject().apply {
+                put("allowedAuthMethods", allowedCardAuthMethods)
+                put("allowedCardNetworks", allowedCardNetworks)
+                put("billingAddressRequired", true)
+                put("billingAddressParameters", JSONObject().apply {
+                    put("format", "FULL")
+                })
+            }
+
+            put("type", "CARD")
+            put("parameters", parameters)
+        }
+    }
+
+    private fun cardPaymentMethod(): JSONObject {
+        val cardPaymentMethod = baseCardPaymentMethod()
+        cardPaymentMethod.put("tokenizationSpecification", gatewayTokenizationSpecification())
+
+        return cardPaymentMethod
+    }
 }
 
 class DiffCallback(

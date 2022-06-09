@@ -3,16 +3,18 @@ package com.example.nutshop.ui.search
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nutshop.R
 import com.example.nutshop.domain.models.Product
+import com.squareup.picasso.Picasso
 
 class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.ViewHolder>() {
 
     private var list : MutableList<Product?> = mutableListOf()
-
+    private var varSearched : String = ""
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,8 +25,10 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = list[position]
         val productTitle = holder.itemView.findViewById(R.id.product_searched_name) as TextView
-
+        val productImage = holder.itemView.findViewById(R.id.product_searched_image) as ImageView
         productTitle.text = product?.productName
+
+        Picasso.get().load(product?.productPictureLink).into(productImage)
     }
 
     override fun getItemCount(): Int {

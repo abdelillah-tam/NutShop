@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -42,7 +44,11 @@ class WishlistFragment : Fragment(R.layout.fragment_wishlist) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 wishlistViewModel.state.collect{
-                    favoriteAdapter.setList(it.list)
+                    if (it.list.isNotEmpty()) {
+                        favoriteAdapter.setList(it.list)
+                        binding.emptyWishlist.visibility = GONE
+
+                    }else binding.emptyWishlist.visibility = VISIBLE
                 }
             }
         }

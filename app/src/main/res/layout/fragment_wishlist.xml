@@ -11,5 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="There is no products in your wishlist"
+        android:gravity="center"
+        android:id="@+id/empty_wishlist"
+        android:fontFamily="@font/tajawal_light"
+        android:textSize="19sp"
+        android:visibility="gone"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

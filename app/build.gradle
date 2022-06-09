@@ -76,6 +76,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.ar:core:1.30.0'
 
+    implementation 'com.google.android.gms:play-services-wallet:19.1.0'
+
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     //All Test Dependencies

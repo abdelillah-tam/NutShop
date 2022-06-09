@@ -1,5 +1,6 @@
 package com.example.nutshop
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.nutshop.databinding.ActivityMainBinding
+import com.google.android.gms.wallet.PaymentsClient
+import com.google.android.gms.wallet.Wallet
+import com.google.android.gms.wallet.WalletConstants
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,11 +25,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHost: NavHostFragment
 
-
+    private lateinit var paymentsClients : PaymentsClient
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        val walletOptions = Wallet.WalletOptions.Builder().setEnvironment(WalletConstants.ENVIRONMENT_TEST).build()
+        paymentsClients = Wallet.getPaymentsClient(this, walletOptions)
+
+
 
         navHost =
             supportFragmentManager.findFragmentById(R.id.fragment_container_for_fragments) as NavHostFragment
@@ -77,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         navHost.findNavController().navigateUp()
         super.onBackPressed()
     }
+
 
 
     /* fun setData() {

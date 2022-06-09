@@ -223,8 +223,8 @@ object RemoteDataSource : DataSource {
     }
 
     override fun searchForProducts(word: String): Flow<List<Product?>> = callbackFlow {
-        productsFirestore.whereGreaterThanOrEqualTo("productName", word).get()
-            .addOnCompleteListener {
+        productsFirestore.orderBy("productName")
+            .startAt(word).endAt("$word\uf8ff").get().addOnCompleteListener {
                 if (it.isSuccessful) {
                     val list = it.result.toObjects(Product::class.java)
                     if (list.size > 0) {

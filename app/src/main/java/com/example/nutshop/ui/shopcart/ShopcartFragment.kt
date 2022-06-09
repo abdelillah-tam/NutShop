@@ -14,6 +14,7 @@ import com.example.nutshop.R
 import com.example.nutshop.databinding.FragmentShopcartBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 @AndroidEntryPoint
 class ShopcartFragment : Fragment(R.layout.fragment_shopcart) {
@@ -22,10 +23,19 @@ class ShopcartFragment : Fragment(R.layout.fragment_shopcart) {
     private lateinit var binding : FragmentShopcartBinding
 
     val shopcartViewModel : ShopcartViewModel by activityViewModels()
+
+    private val baseRequest = JSONObject().apply {
+        put("apiVersion", 2)
+        put("apiVersionMinor", 0)
+    }
+
     @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentShopcartBinding.bind(view)
+
+
+
         listAdapter = ShopcartListAdapter()
         listAdapter.setModel(shopcartViewModel)
         binding.listShopcart.also {
