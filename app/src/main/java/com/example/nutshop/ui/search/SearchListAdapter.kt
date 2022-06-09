@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso
 class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.ViewHolder>() {
 
     private var list : MutableList<Product?> = mutableListOf()
-    private var varSearched : String = ""
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
