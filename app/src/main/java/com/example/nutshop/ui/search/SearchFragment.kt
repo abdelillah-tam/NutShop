@@ -1,5 +1,7 @@
 package com.example.nutshop.ui.search
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,6 +9,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
@@ -34,7 +37,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSearchBinding.bind(view)
-
+        requireActivity().window.navigationBarColor = Color.TRANSPARENT
+        @RequiresApi(Build.VERSION_CODES.Q)
+        requireActivity().window.isNavigationBarContrastEnforced = false
+        @RequiresApi(Build.VERSION_CODES.Q)
+        requireActivity().window.isStatusBarContrastEnforced = false
+        requireActivity().window.statusBarColor = Color.TRANSPARENT
         initToolbar()
 
         searchListAdapter = SearchListAdapter()

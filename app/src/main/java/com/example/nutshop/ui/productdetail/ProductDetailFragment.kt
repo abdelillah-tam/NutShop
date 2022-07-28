@@ -1,9 +1,12 @@
 package com.example.nutshop.ui.productdetail
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -33,7 +36,10 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProductDetailBinding.bind(view)
-
+        requireActivity().window.statusBarColor = requireActivity().resources.getColor(R.color.blue_900)
+        requireActivity().window.navigationBarColor = Color.TRANSPARENT
+        @RequiresApi(Build.VERSION_CODES.Q)
+        requireActivity().window.isNavigationBarContrastEnforced = false
         initToolbar()
 
         val product = args.product

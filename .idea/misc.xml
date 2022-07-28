@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/backgroundshape.xml" value="0.16" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/bottomnavigationselector.xml" value="0.137" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/buttonselected.xml" value="0.181" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/buttonshape.xml" value="0.181" />
@@ -11,6 +12,7 @@
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/categorybutton_unchecked_shape.xml" value="0.181" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/circlebuttonshape.xml" value="0.1475" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/favorite_selector.xml" value="0.1475" />
+        <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/forsplash.xml" value="0.2335" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/ic_cancel.xml" value="0.201" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/ic_favorite.xml" value="0.1475" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/drawable/ic_favorite_border.xml" value="0.1475" />
@@ -20,6 +22,7 @@
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/activity_login.xml" value="0.21114864864864866" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/activity_main.xml" value="0.21114864864864866" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/activity_shopcart.xml" value="0.25" />
+        <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/activity_splash_screen.xml" value="0.21114864864864866" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/favorite_item.xml" value="0.20903010033444816" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/fragment_favorite.xml" value="0.21114864864864866" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/fragment_home.xml" value="0.20903010033444816" />
@@ -34,6 +37,7 @@
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/product_item.xml" value="0.21114864864864866" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/search_item.xml" value="0.21114864864864866" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/shopcart_item.xml" value="0.20903010033444816" />
+        <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/layout/testlayout.xml" value="0.21114864864864866" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AndroidStudioProjects/NutShop/app/src/main/res/menu/bottom_menu.xml" value="0.21114864864864866" />
         <entry key="..\:/Users/Abdelillah Tamoussat/AppData/Local/Android/Sdk/platforms/android-31/data/res/drawable/btn_default.xml" value="0.166" />
       </map>

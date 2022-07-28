@@ -1,9 +1,13 @@
 package com.example.nutshop.ui.home
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -30,7 +34,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding = FragmentHomeBinding.bind(view)
 
         initToolbar()
@@ -64,6 +67,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().setTheme(R.style.Theme_NutShop)
+        Log.e("TAG", "onResume: called ya man" )
+    }
+
 
     fun getProducts(checkedId: Int) {
         when (checkedId) {
