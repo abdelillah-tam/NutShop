@@ -4,29 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundshape"
+    android:background="@color/blue_900"
     tools:context=".SplashScreenActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="NutShop"
-        android:fontFamily="@font/tajawal_regular"
-        android:textColor="@color/blue_800"
-        android:textSize="38sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Your supplements store"
-        android:textColor="@color/blue_800"
-        android:fontFamily="@font/tajawal_light"
-        android:gravity="center"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        android:layout_height="match_parent"
+        android:src="@drawable/nutshop_logo"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

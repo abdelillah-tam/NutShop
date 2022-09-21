@@ -29,7 +29,6 @@ class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyc
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = productList.get(position)
-
         val productImage = holder.itemView.findViewById(R.id.product_image) as ImageView
         val productTitle = holder.itemView.findViewById(R.id.product_title) as TextView
         val productPrice = holder.itemView.findViewById(R.id.product_price) as TextView
@@ -54,6 +53,7 @@ class HomeRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<HomeRecyc
                 }
             }
         }
+
 
     }
 
